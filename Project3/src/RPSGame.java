@@ -11,7 +11,7 @@ public class RPSGame {
 
 	// Instance data
 	
-	private enum MoveType {
+	public enum MoveType {
 		ROCK, PAPER, SCISSORS;
 		
 		public static MoveType getRandomMove() {
@@ -21,7 +21,7 @@ public class RPSGame {
 		
 	}
 	
-	private enum MatchOutcome {
+	public enum MatchOutcome {
 		USER_WINS, COMPUTER_WINS, TIE
 	}
 	
@@ -59,9 +59,45 @@ public class RPSGame {
 
 	public MatchOutcome findWinner(MoveType userMove, MoveType computerMove) {
 		// Determine the winner using the two moves and update the win count.
-		// Then, return the outcome (win/lose/tie).	
+		// Then, return the outcome.
 		
-		return MatchOutcome.COMPUTER_WINS;
+		MatchOutcome outcome = MatchOutcome.TIE;	// Local variables must be initialized
+		
+		if (userMove == MoveType.ROCK) {
+			if (computerMove == MoveType.ROCK) {
+				outcome = MatchOutcome.TIE;
+			} else if (computerMove == MoveType.PAPER) {
+				outcome = MatchOutcome.COMPUTER_WINS;
+			} else {		
+				outcome = MatchOutcome.USER_WINS;
+			}
+		} else if (userMove == MoveType.PAPER) {
+			if (computerMove == MoveType.ROCK) {
+				outcome = MatchOutcome.USER_WINS;
+			} else if (computerMove == MoveType.PAPER) {
+				outcome = MatchOutcome.TIE;
+			} else {		
+				outcome = MatchOutcome.COMPUTER_WINS;
+			}
+		} else {		// userMove == MoveType.SCISSORS
+			if (computerMove == MoveType.ROCK) {
+				outcome = MatchOutcome.COMPUTER_WINS;
+			} else if (computerMove == MoveType.PAPER) {
+				outcome = MatchOutcome.USER_WINS;
+			} else {		
+				outcome = MatchOutcome.USER_WINS;
+			}
+		}
+		
+		if (outcome == MatchOutcome.USER_WINS) uWins += 1;
+		else if (outcome == MatchOutcome.COMPUTER_WINS) cWins += 1;
+		else ties += 1;
+		
+		return outcome;
+	}
+
+	public String toString() {
+		return "";
 	}
 
 }

@@ -11,6 +11,9 @@ public class Tests {
 			System.out.println(game.generateComputerPlay());
 		}
 			
+		System.out.println(game.findWinner(RPSGame.MoveType.PAPER, RPSGame.MoveType.SCISSORS));
+		System.out.println(game.findWinner(RPSGame.MoveType.ROCK, RPSGame.MoveType.SCISSORS));	
+		System.out.println(game.findWinner(RPSGame.MoveType.PAPER, RPSGame.MoveType.PAPER));
 	}
 
 }
