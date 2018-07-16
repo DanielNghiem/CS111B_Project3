@@ -34,8 +34,6 @@ public class RPSGame {
 
     // Constructor
     public RPSGame(Integer betAmount) {
-        System.out.println("Bet:");
-        System.out.println(betAmount);
         this.betAmount = betAmount;
     }
 

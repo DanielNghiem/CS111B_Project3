@@ -30,9 +30,12 @@ public class Helper {
             Optional<String> inputResult = dialog.showAndWait();
             if (inputResult.isPresent()) {
                 try {
-                    return Integer.parseInt(inputResult.get());
+                    int bet = Integer.parseInt(inputResult.get());
+                    if (bet > 0) return bet;
+                    else throw new Exception();
                 } catch (Exception ex) {
-                }
+                	System.out.println("You must enter an integer greater than zero.");
+                }           
             }
         }
         return null;
