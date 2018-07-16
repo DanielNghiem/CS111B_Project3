@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 public class Helper {
+
     public static void initMatchOutcomeHashMap(HashMap<RPSGame.MatchOutcome, String> matchOutcomeStrings) {
         matchOutcomeStrings.put(RPSGame.MatchOutcome.USER_WINS, "You win!");
         matchOutcomeStrings.put(RPSGame.MatchOutcome.COMPUTER_WINS, "You Lose!");
@@ -33,9 +34,7 @@ public class Helper {
                 } catch (Exception ex) {
                 }
             }
-
         }
-
         return null;
     }
 
@@ -43,7 +42,6 @@ public class Helper {
         public static final String ROCK = "Play Rock";
         public static final String SCISSORS = "Play Scissors";
         public static final String PAPER = "Play Paper";
-
     }
 }
 

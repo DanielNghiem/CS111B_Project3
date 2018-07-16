@@ -28,7 +28,6 @@ public class RockPaperScissorsFXGUI extends Application {
 
     public void start(Stage primaryStage) {
 
-
         Helper.initMatchOutcomeHashMap(this.matchOutcomeStrings);
         Helper.initMoveImagesHashMap(this.moveImages);
         game = new RPSGame(Helper.getBetAmount());
@@ -78,24 +77,26 @@ public class RockPaperScissorsFXGUI extends Application {
         tieText = new Text("Ties: " + game.getTies());
         tieText.setFont(Font.font("Helvetica", 16));
         tieText.setFill(Color.BLUE);
+        HBox statsBox = new HBox(cWinsText, uWinsText, tieText);
+        statsBox.setSpacing(10);
+        statsBox.setAlignment(Pos.CENTER);
+        
+        /* the remaining balance after betting */
         betText = new Text();
         betText.setFont(Font.font("Helvetica", 16));
         betText.setFill(Color.BROWN);
-
         betText.setVisible(this.game.isBetting());
         betText.setText("Balance :0");
-
-        HBox statsBox = new HBox(cWinsText, uWinsText, tieText);
         HBox betBox = new HBox(betText);
-        statsBox.setSpacing(10);
-        statsBox.setAlignment(Pos.CENTER);
         betBox.setAlignment(Pos.CENTER);
 
+        /* the root pane */
         VBox pane = new VBox(imageBox, labelBox, matchOutcomeText, buttonBox, statsBox, betBox);
         pane.setAlignment(Pos.CENTER);
         pane.setSpacing(20);
         pane.setStyle("-fx-background-color: white");
 
+        /* Set the scene and stage */
         Scene scene = new Scene(pane, 400, 400, Color.TRANSPARENT);
         primaryStage.setTitle("Rock, Paper, Scissors, Go!");
         primaryStage.setResizable(false);
@@ -103,7 +104,9 @@ public class RockPaperScissorsFXGUI extends Application {
         primaryStage.show();
     }
 
-
+    /* Get the player's action, generate a random computer move,
+     * then display the winner and update the win count in the GUI.
+     */
     private void handleUserPlay(ActionEvent event) {
         // to make all aspects of the display visible
         userMoveImageView.setVisible(true);
@@ -111,7 +114,6 @@ public class RockPaperScissorsFXGUI extends Application {
         labelBox.setVisible(true);
 
         Button playButton = ((Button) event.getSource());
-
 
         RPSGame.MoveType playerMove = getUserMove(playButton);
         RPSGame.MoveType computerMove = getComputerMove();
@@ -133,6 +135,9 @@ public class RockPaperScissorsFXGUI extends Application {
         return computerMove;
     }
 
+    /* Displays the outcome of the match.  If betting feature is on, then display
+     * the user's remaining balance.
+     */
     public void updateStatUi(RPSGame.MatchOutcome matchOutcome) {
         matchOutcomeText.setText(matchOutcomeStrings.get(matchOutcome));
         cWinsText.setText(String.format("Computer Wins: %d", game.getCWins()));
@@ -143,9 +148,7 @@ public class RockPaperScissorsFXGUI extends Application {
         }
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
-
 }

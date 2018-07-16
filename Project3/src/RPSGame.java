@@ -1,5 +1,7 @@
 /*
- * Daniel Nghiem (W99272040)
+ * Daniel Nghiem
+ * Samuel Fufa
+ * 
  * CS111B
  * Project 3:  Rock, Paper, Scissors
  * 
@@ -10,7 +12,7 @@ import java.util.Random;
 public class RPSGame {
 
     // Instance data
-
+	
     public enum MoveType {
         ROCK, PAPER, SCISSORS;
 
@@ -18,7 +20,6 @@ public class RPSGame {
             Random generator = new Random();
             return values()[generator.nextInt(values().length)];
         }
-
     }
 
     public enum MatchOutcome {
@@ -31,9 +32,7 @@ public class RPSGame {
     private Integer betAmount;
     private int userBalance;
 
-
-// Constructor
-
+    // Constructor
     public RPSGame(Integer betAmount) {
         System.out.println("Bet:");
         System.out.println(betAmount);
@@ -105,7 +104,6 @@ public class RPSGame {
 
         updateStats(outcome);
         processBet(outcome);
-
         return outcome;
     }
 
@@ -114,6 +112,7 @@ public class RPSGame {
         else if (outcome == MatchOutcome.COMPUTER_WINS) cWins += 1;
         else ties += 1;
     }
+    
     public void processBet(MatchOutcome outcome) {
         if (this.betAmount == null || outcome == MatchOutcome.TIE) {
             return;
