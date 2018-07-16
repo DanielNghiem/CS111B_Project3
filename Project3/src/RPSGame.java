@@ -5,8 +5,6 @@
  * 
  */
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
-
 import java.util.Random;
 
 public class RPSGame {
