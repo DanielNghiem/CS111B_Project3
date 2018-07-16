@@ -11,7 +11,7 @@ import javafx.scene.text.*;
 import javafx.stage.*;
 
 import java.util.HashMap;
-import java.util.Optional;
+
 
 public class RockPaperScissorsFXGUI extends Application {
 

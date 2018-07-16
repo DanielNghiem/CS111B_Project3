@@ -120,7 +120,11 @@ public class RPSGame {
     }
 
     public String toString() {
-        return "";
+        String gameDescription = "Current Rock, Paper, Scissors game stats: \n";
+        gameDescription += "User Wins: " + uWins + "\n";
+        gameDescription += "Compyter Wins: " + cWins  + "\n";
+        gameDescription += "Ties: " + ties + "\n"; 
+        return gameDescription;
     }
 
 }
